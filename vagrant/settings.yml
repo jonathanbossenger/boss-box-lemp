@@ -1,0 +1,5 @@
+#site specific settings
+site:
+  ip: 192.168.33.10
+  sitename: sitename
+  mysqlpassword: password

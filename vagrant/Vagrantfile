@@ -1,0 +1,56 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'yaml'
+
+settings = YAML.load_file 'settings.yml'
+
+Vagrant.configure("2") do |config|
+
+    # Optional, disable update checks (for when working offline)
+    # config.vm.box_check_update = false
+
+    config.vm.box = "boss-box-lemp" # to be changed once uploaded
+    config.vm.network "private_network", ip: settings['site']['ip']
+    config.vm.hostname = settings['site']['sitename']
+    config.vm.synced_folder "../", "/var/www/public", :mount_options => ["dmode=777", "fmode=666"]
+    
+    # Optional NFS. Make sure to remove other synced_folder line too
+    #config.vm.synced_folder "../", "/var/www/public", :nfs => { :mount_options => ["dmode=777","fmode=666"] }
+
+    config.vm.provider "virtualbox" do |vb|
+        # set to increments of 1024
+        vb.memory = "2048"
+        vb.name = settings['site']['sitename']
+    end
+
+    config.vm.provision "shell", :args => [settings['site']['sitename'], settings['site']['mysqlpassword']], inline: <<-SHELL
+
+        SITE_NAME=$1
+        MYSQL_PASSWORD=$2
+
+        if [ $MYSQL_PASSWORD != 'password' ];
+        then
+            echo "Updating MySQL root password..."
+            mysql -uroot -ppassword -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MYSQL_PASSWORD'); FLUSH PRIVILEGES;"
+        fi
+
+        echo "Creating database, if it doesn't already exist..."
+        mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS $SITE_NAME;"
+
+        PHP_INFO_FILE="/var/www/public/info.php"
+        if [ ! -f "$PHP_INFO_FILE" ]
+        then
+            echo "Creating phpinfo file..."
+            echo '<?php echo phpinfo(); ?>' > /var/www/public/info.php
+        fi
+
+        echo "Restarting web server..."
+        sudo systemctl restart php7.0-fpm
+        sudo systemctl restart nginx
+
+        echo "Setup complete."
+
+    SHELL
+
+end
