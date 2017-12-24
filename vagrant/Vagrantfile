@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
     # Optional, disable update checks (for when working offline)
     # config.vm.box_check_update = false
 
-    config.vm.box = "boss-box-lemp" # to be changed once uploaded
+    config.vm.box = "jonathanbossenger/boss-box-lemp" # to be changed once uploaded
     config.vm.network "private_network", ip: settings['site']['ip']
     config.vm.hostname = settings['site']['sitename']
     config.vm.synced_folder "../", "/var/www/public", :mount_options => ["dmode=777", "fmode=666"]
