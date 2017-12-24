@@ -45,6 +45,9 @@ Vagrant.configure("2") do |config|
             echo '<?php echo phpinfo(); ?>' > /var/www/public/info.php
         fi
 
+        echo "Setting nginx server_name..."
+        sudo sed -i -e "s/server_name _;/server_name $SITE_NAME;/g" /etc/nginx/sites-available/default
+
         echo "Restarting web server..."
         sudo systemctl restart php7.0-fpm
         sudo systemctl restart nginx
