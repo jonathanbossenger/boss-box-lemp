@@ -32,6 +32,7 @@ Additional Software
 
 1. [PHPUnit](PHPUnit)
 1. [PHPMyadmin](https://www.phpmyadmin.net/)
+1. [Xdebug](https://xdebug.org/)
 1. [Composer](https://getcomposer.org/)
 1. [WP-CLI](http://wp-cli.org/)
 1. [Ngrok](https://ngrok.com/)
@@ -63,7 +64,7 @@ Recommended Software
 This plugin will allow your system to manage writing to the hosts file automatically, instead of having to edit /etc/hosts each time.
     
 Initial Setup (Linux/OSx)
-=======================
+=========================
     
 From a terminal window:    
     
@@ -123,7 +124,7 @@ Login to the virtual machine via SSH
 Access
 ======
 
-You can access the local site by either the IP address or sitename specified in your settings.yaml
+You can access the local site by either the IP address or sitename specified in your settings.yaml (if it is set in your /etc/hosts file)
 
 ```
 http://192.168.33.10 or http://sitename
@@ -140,6 +141,19 @@ http://192.168.33.10/phpmyadmin or http://sitename/phpmyadmin
 ```
 http://192.168.33.10:8025 or http://sitename:8025
 ```
+
+Xdedbug/PHPStorm
+================
+
+This box has Xdebug installed and is setup to make use of the Zero-configuration Debugging with PhpStorm
+
+1. Either setup the PHPStorm Bookmarklets or install the Xdebug helper for Chrome
+1. Turn debugging on from the browser using whichever option you've selected above
+1. Set breakpoints in your PHPStorm code window
+1. Make sure PHPStorm is listening for incoming debug connections (Run > Start listening for PHP debug connections)
+1. Refresh your project url
+
+On the first run, PHPStorm will ask you to map the debugger to a local path, you should be able to accept the defaults.
 
 Enjoy!    
     
