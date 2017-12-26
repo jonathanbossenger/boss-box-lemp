@@ -124,7 +124,7 @@ Login to the virtual machine via SSH
 Access
 ======
 
-You can access the local site by either the IP address or sitename specified in your settings.yaml (if it is set in your /etc/hosts file)
+You can access the local site by either the IP address or sitename specified in your settings.yaml (if you have set the relevant /etc/hosts record)
 
 ```
 http://192.168.33.10 or http://sitename
