@@ -142,18 +142,18 @@ http://192.168.33.10/phpmyadmin or http://sitename/phpmyadmin
 http://192.168.33.10:8025 or http://sitename:8025
 ```
 
-Xdedbug/PHPStorm
-================
+Using Xdebug with PHPStorm
+==========================
 
-This box has Xdebug installed and is setup to make use of the Zero-configuration Debugging with PhpStorm
+This box has Xdebug installed and is setup to make use of the [Zero-configuration Debugging with PhpStorm](http://www.jetbrains.com/phpstorm/documentation/phpstorm-video-tutorials.html#10)
 
-1. Either setup the PHPStorm Bookmarklets or install the Xdebug helper for Chrome
-1. Turn debugging on from the browser using whichever option you've selected above
-1. Set breakpoints in your PHPStorm code window
+1. Either setup the [PHPStorm Bookmarklets](https://www.jetbrains.com/phpstorm/marklets/) or install the [Xdebug helper for Chrome](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc?hl=en)
+1. Start debugging from the browser using whichever option you've chosen above
 1. Make sure PHPStorm is listening for incoming debug connections (Run > Start listening for PHP debug connections)
+1. Set breakpoints in your PHPStorm code window
 1. Refresh your project url
 
 On the first run, PHPStorm will ask you to map the debugger to a local path, you should be able to accept the defaults.
 
-Enjoy!    
-    
+
+Enjoy!
