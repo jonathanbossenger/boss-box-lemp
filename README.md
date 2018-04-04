@@ -11,7 +11,7 @@ This project was inspired by [Scotch Box](https://box.scotch.io/) and built usin
 What's included?
 ================
 
-Base Web Server Stack (LAMP)
+Base Web Server Stack (LEMP)
 ----------------------------
 
 1. Ubuntu 16.04 LTS
