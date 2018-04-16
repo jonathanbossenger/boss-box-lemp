@@ -62,6 +62,10 @@ Recommended Software
 [Vagrant Hosts Updater](https://github.com/cogitatio/vagrant-hostsupdater)
 
 This plugin will allow your system to manage writing to the hosts file automatically, instead of having to edit /etc/hosts each time.
+
+A note on Vagrant box size
+==========================
+The Boss Box image is approximately 900mb in size. This means that the first time you use it, you'll have to download it to your hard drive, meaning your first vagrant up could take a little while.
     
 Initial Setup (Linux/OSx)
 =========================
