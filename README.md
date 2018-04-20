@@ -159,5 +159,11 @@ This box has Xdebug installed and is setup to make use of the [Zero-configuratio
 
 On the first run, PHPStorm will ask you to map the debugger to a local path, you should be able to accept the defaults.
 
+PHP.ini settings
+================
+
+Boss box has it's own custom PHP.ini file for overriding the default PHP.ini. You can find this file in the following location.
+
+`/etc/php/7.0/fpm/conf.d/user.ini`
 
 Enjoy!
