@@ -32,4 +32,11 @@ Vagrant.configure("2") do |config|
         s.args = [ settings['site']['ip'], settings['site']['sitename'], settings['site']['database'], settings['site']['mysqlpassword'] ]
     end
 
+    # Since Vagrant 2.1.0, triggers are supported out of the box
+    # Backup database before halting VM
+    config.trigger.before :halt do |trigger|
+          trigger.warn = "Backing up database..."
+          trigger.run_remote = {inline: "mysqldump -uroot -p#{settings['site']['mysqlpassword']} #{settings['site']['database']} > /var/www/public/#{settings['site']['database']}.sql"}
+    end
+
 end
